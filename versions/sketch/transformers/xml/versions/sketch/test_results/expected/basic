@@ -1,0 +1,83 @@
+(
+    `doc type`: * (
+        `name`: "html"
+    )
+    `root`: (
+        `name`: (
+            `namespace prefix`: _
+            `local name`: "html"
+        )
+        `attributes`: [ ]
+        `content type`: | `nodes only` (
+            `children`: [ | `element` (
+                `name`: (
+                    `namespace prefix`: _
+                    `local name`: "head"
+                )
+                `attributes`: [ ]
+                `content type`: | `nodes only` (
+                    `children`: [ | `element` (
+                        `name`: (
+                            `namespace prefix`: _
+                            `local name`: "meta"
+                        )
+                        `attributes`: [ (
+                            `name`: (
+                                `namespace prefix`: _
+                                `local name`: "charset"
+                            )
+                            `value`: "UTF-8"
+                        ) ]
+                        `content type`: | `empty` ~
+                    ) | `element` (
+                        `name`: (
+                            `namespace prefix`: _
+                            `local name`: "meta"
+                        )
+                        `attributes`: [ (
+                            `name`: (
+                                `namespace prefix`: _
+                                `local name`: "name"
+                            )
+                            `value`: "viewport"
+                        ) (
+                            `name`: (
+                                `namespace prefix`: _
+                                `local name`: "content"
+                            )
+                            `value`: "width=device-width, initial-scale=1.0"
+                        ) ]
+                        `content type`: | `empty` ~
+                    ) | `element` (
+                        `name`: (
+                            `namespace prefix`: _
+                            `local name`: "style"
+                        )
+                        `attributes`: [ ]
+                        `content type`: | `text only` (
+                            `value`: ""
+                        )
+                    ) ]
+                )
+            ) | `element` (
+                `name`: (
+                    `namespace prefix`: _
+                    `local name`: "body"
+                )
+                `attributes`: [ ]
+                `content type`: | `nodes only` (
+                    `children`: [ | `element` (
+                        `name`: (
+                            `namespace prefix`: _
+                            `local name`: "div"
+                        )
+                        `attributes`: [ ]
+                        `content type`: | `nodes only` (
+                            `children`: [ ]
+                        )
+                    ) ]
+                )
+            ) ]
+        )
+    )
+)

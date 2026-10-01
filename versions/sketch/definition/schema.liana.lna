@@ -1,0 +1,124 @@
+(
+    `schema`: | `schema` (
+        `schema imports`: {}
+        `resolver imports`: {}
+        `globals`: (
+            `complexity`: | `unconstrained` ~
+            `text types`: {
+                'multi line text': < | `multi line` ~ | `no` ~ >
+                'text': < | `single line` ~ | `no` ~ >
+            }
+            `simple types`: {
+                'natural': < | `number` < | `exact` < _ | `natural` ~ > > >
+                'integer': < | `number` < | `exact` < _ | `integer` ~ > > >
+                'number': (
+                    `type`: | `number` (
+                        `precision`: | `approximation` (
+                            `significant digits`: 10
+                        )
+                    )
+                )
+                'boolean': < | `boolean` ~ >
+            }
+        )
+        `modules`: {
+            'Root': < | `component` < | `internal acyclic` 'Document' _ > >
+            'Document': < | `group` {
+                'schema': < _ | `optional` | `text` | `global` 'text' >
+                'id': < _ | `optional` | `text` | `global` 'text' >
+                'defs': < _ | `component` < | `internal acyclic` 'Definitions' _ > >
+                'root value': < _ | `optional` | `component` < | `internal acyclic` 'Value' _ > >
+            } >
+            'Definitions': < | `dictionary` < | `state` < {
+                'value': < _ _ | `component` < | `internal acyclic` 'Value' _ > >
+                'namespace': < _ _ | `component` < | `internal` 'Definitions' _ > >
+            } _ > > >
+            'JSON Value': < | `state` < {
+                'null': < _ _ | `nothing` ~ >
+                'boolean': < _ _ | `simple` | `global` 'boolean' >
+                'number': < _ _ | `simple` | `global` 'number' >
+                'string': < _ _ | `text` | `global` 'text' >
+                'array': < _ _ | `list` < | `component` < | `internal` 'JSON Value' _ > _ > >
+                'object': < _ _ | `dictionary` < | `component` < | `internal` 'JSON Value' _ > > >
+            } _ > >
+            'Value': < | `group` {
+                'description': < _ | `optional` | `text` | `global` 'multi line text' >
+                'comment': < _ | `optional` | `text` | `global` 'multi line text' >
+                'deprecated': < _ | `optional` | `simple` | `global` 'boolean' >
+                'readOnly': < _ | `optional` | `simple` | `global` 'boolean' >
+                'writeOnly': < _ | `optional` | `simple` | `global` 'boolean' >
+                'default': < _ | `optional` | `component` < | `internal acyclic` 'JSON Value' _ > >
+                'examples': < _ | `list` < | `component` < | `internal acyclic` 'JSON Value' _ > _ > >
+                'constraint': < _ | `optional` | `state` < {
+                    'oneOf': < _ _ | `list` < | `component` < | `internal` 'Value' _ > _ > >
+                    'anyOf': < _ _ | `list` < | `component` < | `internal` 'Value' _ > _ > >
+                    'allOf': < _ _ | `list` < | `component` < | `internal` 'Value' _ > _ > >
+                    'not': < _ _ | `component` < | `internal` 'Value' _ > >
+                    'object': < _ _ | `group` {
+                        'properties': < _ | `dictionary` < | `component` < | `internal` 'Value' _ > > >
+                        'patternProperties': < _ | `dictionary` < | `component` < | `internal` 'Value' _ > > >
+                        'propertyNames': < _ | `optional` | `component` < | `internal` 'Value' _ > >
+                        'maxProperties': < _ | `optional` | `simple` | `global` 'natural' >
+                        'minProperties': < _ | `optional` | `simple` | `global` 'natural' >
+                        'required': < _ | `list` < | `text` | `global` 'text' _ > >
+                        'dependentRequired': < _ | `dictionary` < | `dictionary` < | `nothing` ~ > > >
+                        'additionalProperties': < _ | `optional` | `state` < {
+                            'allowed': < _ _ | `nothing` ~ >
+                            'forbidden': < _ _ | `nothing` ~ >
+                            'schema': < _ _ | `component` < | `internal` 'Value' _ > >
+                        } _ > >
+                    } >
+                    'array': < _ _ | `group` {
+                        'items': < _ | `optional` | `component` < | `internal` 'Value' _ > >
+                        'maxItems': < _ | `optional` | `simple` | `global` 'natural' >
+                        'minItems': < _ | `optional` | `simple` | `global` 'natural' >
+                        'prefixItems': < _ | `list` < | `component` < | `internal` 'Value' _ > _ > >
+                        'uniqueItems': < _ | `optional` | `simple` | `global` 'boolean' >
+                        'maxContains': < _ | `optional` | `simple` | `global` 'natural' >
+                        'minContains': < _ | `optional` | `simple` | `global` 'natural' >
+                    } >
+                    'boolean': < _ _ | `nothing` ~ >
+                    'null': < _ _ | `nothing` ~ >
+                    'ref': < _ _ | `list` < | `text` | `global` 'text' _ > >
+                    'string': < _ _ | `state` < {
+                        'variable': < _ _ | `group` {
+                            'maxLength': < _ | `optional` | `simple` | `global` 'natural' >
+                            'minLength': < _ | `optional` | `simple` | `global` 'natural' >
+                            'pattern': < _ | `optional` | `text` | `global` 'text' >
+                            'format': < _ | `optional` | `text` | `global` 'text' >
+                        } >
+                        'const': < _ _ | `text` | `global` 'text' >
+                        'enum': < _ _ | `dictionary` < | `nothing` ~ > >
+                    } _ > >
+                    'integer': < _ _ | `group` {
+                        'maximum': < _ | `optional` | `state` < {
+                            'inclusive': < _ _ | `simple` | `global` 'integer' >
+                            'exclusive': < _ _ | `simple` | `global` 'integer' >
+                        } _ > >
+                        'minimum': < _ | `optional` | `state` < {
+                            'inclusive': < _ _ | `simple` | `global` 'integer' >
+                            'exclusive': < _ _ | `simple` | `global` 'integer' >
+                        } _ > >
+                        'multipleOf': < _ | `optional` | `simple` | `global` 'natural' >
+                    } >
+                    'number': < _ _ | `group` {
+                        'maximum': < _ | `optional` | `state` < {
+                            'inclusive': < _ _ | `simple` | `global` 'integer' >
+                            'exclusive': < _ _ | `simple` | `global` 'integer' >
+                        } _ > >
+                        'minimum': < _ | `optional` | `state` < {
+                            'inclusive': < _ _ | `simple` | `global` 'integer' >
+                            'exclusive': < _ _ | `simple` | `global` 'integer' >
+                        } _ > >
+                        'multipleOf': < _ | `optional` | `simple` | `global` 'number' >
+                    } >
+                } _ > >
+            } >
+        }
+        `complexity`: | `unconstrained` ~
+    )
+    `schema path`: [ ]
+    `complexity`: | `unconstrained` (
+        `module`: "Root"
+    )
+)

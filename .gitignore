@@ -1,0 +1,9 @@
+/coverage-summary.html
+/versions/*/serialize/coverage-html/
+/versions/*/serialize/dist/
+/versions/*/serialize/node_modules/
+/versions/*/serialize/test_results/actual/
+/versions/*/transformers/*/versions/*/coverage-html/
+/versions/*/transformers/*/versions/*/dist/
+/versions/*/transformers/*/versions/*/node_modules/
+/versions/*/transformers/*/versions/*/test_results/actual/

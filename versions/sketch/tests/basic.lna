@@ -1,0 +1,15 @@
+(
+    `schema`: _
+    `id`: _
+    `defs`: {}
+    `root value`: * (
+        `description`: _
+        `comment`: _
+        `deprecated`: _
+        `readOnly`: _
+        `writeOnly`: _
+        `default`: _
+        `examples`: [ ]
+        `constraint`: * | `string` | `const` "foo"
+    )
+)
